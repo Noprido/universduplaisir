@@ -1,0 +1,70 @@
+<%- include('../layouts/header') %>
+
+<%- include('../layouts/navigation') %>
+<%- include('../layouts/mobileMenu') %>
+
+<!-- ═══════════ INSCRIPTION ═══════════ -->
+ <form action="/auth/register" method="post">
+<div id="page-inscription">
+  <div class="inscription-wrapper">
+    <div class="inscription-card">
+      <div class="section-label" style="text-align:center;">Rejoindre le club</div>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--ivoire);text-align:center;margin-bottom:.5rem;">Demande d'<em style="font-style:italic;color:var(--or);">inscription</em></h1>
+      <p style="text-align:center;font-size:.78rem;color:var(--ivoire-muted);margin-bottom:2rem;">Un administrateur vous contactera pour finaliser votre adhésion.</p>
+      <% if(!success) { %>
+
+       <div id="inscriptionForm">
+        <div class="form-group"><label class="form-label">Votre pseudo</label><input type="text" name="pseudo" class="form-input" placeholder="Pseudo affiché sur le site" id="pseudo"></div>
+        <div class="form-group"><label class="form-label">Adresse email</label><input type="email" name="email" class="form-input" placeholder="votre@email.com" id="email"></div>
+        <div class="form-group">
+          <label class="form-label">Profil</label>
+          <select class="form-input" id="profil" name="profil">
+            <option value="">Sélectionner votre profil</option>
+            <option value="homme">Homme seul</option>
+            <option value="femme">Femme seule</option>
+            <option value="couple">Couple</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pass souhaité</label>
+          <select class="form-input" id="pass" name="pass">
+            <option value="">Sélectionner un pass</option>
+            <option value="standard">Pass Standard — 50€/mois</option>
+            <option value="premium">Pass Premium — 70€/mois</option>
+            <option value="vip">Pass VIP — 100€/mois</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-check">
+            <input type="checkbox" id="age18" name="age18">
+            <span class="form-check-label">Je certifie avoir plus de 18 ans et accepte les <a href="#">conditions d'utilisation</a> et la <a href="#">politique de confidentialité</a>.</span>
+          </label>
+        </div>
+        <button class="btn-primary btn-full" style="padding:1rem;">Envoyer ma demande</button>
+        <p style="text-align:center;font-size:.7rem;color:var(--ivoire-muted);margin-top:.8rem;">🔒 Vos données ne sont jamais partagées.</p>
+      </div>
+      
+
+      <% }else{ %>
+
+      <div class="success-box" id="successBox" style="display: block;">
+        <div class="success-icon">✉️</div>
+        <div class="success-title">Demande enregistrée</div>
+        <p class="success-text">Contactez maintenant un administrateur pour obtenir votre Pass membre et votre identifiant unique.</p>
+        <div class="contact-methods">
+          <a class="contact-btn" href="#"><span>💬</span><div><div style="font-weight:500;">WhatsApp</div><div style="font-size:.7rem;color:var(--ivoire-muted);">Réponse rapide</div></div></a>
+          <a class="contact-btn" href="#"><span>✈️</span><div><div style="font-weight:500;">Telegram</div><div style="font-size:.7rem;color:var(--ivoire-muted);">Messagerie sécurisée</div></div></a>
+          <a class="contact-btn" href="#"><span>📧</span><div><div style="font-weight:500;">Email</div><div style="font-size:.7rem;color:var(--ivoire-muted);">contact@universduplaisir.fr</div></div></a>
+        </div>
+      </div>
+
+    <% } %>
+
+
+    </div>
+  </div>
+</div>
+ </form>
+
+
+<%- include('../layouts/footer') %>
