@@ -108,7 +108,7 @@ section{padding:5rem 1.5rem;}
   /* background-image:var(--hero-bg-image, none); */
   background-size:cover;
   background-position:center top;
-  filter:blur(2px);
+  /* filter:blur(2px); */
   transform:scale(1.06);/* prevent blur edge bleed */
 }
 /* gradient overlay — top dark for nav + bottom dark for text readability */
@@ -165,7 +165,7 @@ section{padding:5rem 1.5rem;}
   padding:1.2rem 1.5rem;
   background:rgba(8,8,8,.7);
   border-top:0.5px solid var(--glass-border);
-  backdrop-filter:blur(8px);
+  /* backdrop-filter:blur(8px); */
   flex-wrap:wrap;gap:1rem;
 }
 @media(min-width:900px){.hero-stat-bar{padding:1.2rem 5rem;gap:3rem;}}
