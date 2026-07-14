@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "id": "1",
+    "nom": "La Nuit des Masques",
+    "theme": "Soirée Masquée",
+    "description": "Soirée élégante et mystérieuse. Dress code : tenue de soirée et masque obligatoire.",
+    "jour": "15",
+    "mois": "Août",
+    "heureDebut": "22h00",
+    "heureFin": "04h00",
+    "type": "Privée",
+    "adresse": "12 Rue des Arts, 75001 Paris",
+    "acces": "Interphone 3B — Dress code obligatoire",
+    "actif": true
+  },
+  {
+    "id": "2",
+    "nom": "La Nuit Blanche",
+    "theme": "White Night",
+    "description": "Dress code immaculé — blanc de rigueur. Ambiance lounge et rencontres en légèreté.",
+    "jour": "20",
+    "mois": "Sep",
+    "heureDebut": "21h00",
+    "heureFin": "03h00",
+    "type": "Mixte",
+    "adresse": "Villa Lumière, 69001 Lyon",
+    "acces": "Parking privé — Dress code : Blanc strict",
+    "actif": true
+  },
+  {
+    "id": "3",
+    "nom": "Rouge & Noir",
+    "theme": "Soirée Rouge",
+    "description": "L'alliance du rouge passion et du noir mystère. Animations live et espaces dédiés.",
+    "jour": "12",
+    "mois": "Oct",
+    "heureDebut": "22h30",
+    "heureFin": "05h00",
+    "type": "VIP prioritaire",
+    "adresse": "Château Noir, 33000 Bordeaux",
+    "acces": "Entrée sud — Badge obligatoire",
+    "actif": true
+  },
+  {
+    "id": "4",
+    "nom": "Rencontres Express",
+    "theme": "Speed Dating",
+    "description": "Format speed dating libertin pour des rencontres rapides. Idéal pour les nouveaux membres.",
+    "jour": "08",
+    "mois": "Nov",
+    "heureDebut": "20h00",
+    "heureFin": "00h00",
+    "type": "Tout public",
+    "adresse": "Le Loft, 69002 Lyon",
+    "acces": "Sonner à l'interphone — Nom de code : Liberté",
+    "actif": true
+  },
+  {
+    "id": "1783964004933",
+    "nom": "Laboriosam et sit n",
+    "theme": "Optio sint quasi vo",
+    "description": "Lorem placeat reici",
+    "jour": "15",
+    "mois": "juillet",
+    "heureDebut": "Qui aperiam in magni",
+    "heureFin": "Quas voluptas et duc",
+    "type": "Sunt qui ratione qu",
+    "adresse": "Similique perspiciat",
+    "acces": "Incididunt in recusa",
+    "actif": true
+  }
+]

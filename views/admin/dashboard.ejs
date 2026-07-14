@@ -1,0 +1,69 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/navigation') %>
+<%- include('../layouts/mobileMenu') %>
+
+<div style="padding:7rem 1.5rem 3rem;max-width:900px;margin:0 auto;">
+
+  <div class="section-label">Administration</div>
+  <h1 class="section-title">Tableau de <em>bord</em></h1>
+
+  <div class="stats-grid" style="margin-bottom:3rem;">
+    <div class="stat-card"><div class="stat-label">En attente</div><div class="stat-val"><%= pending.length %></div></div>
+    <div class="stat-card"><div class="stat-label">Membres actifs</div><div class="stat-val"><%= active.length %></div></div>
+    <div class="stat-card"><div class="stat-label">Rejetés</div><div class="stat-val"><%= rejected.length %></div></div>
+  </div>
+
+    <div style="margin-top:2rem;">
+    <a href="/admin/events" class="btn-outline">Gérer les événements →</a>
+  </div>
+
+  <!-- PENDING -->
+  <h2 class="member-section-title">Demandes en attente</h2>
+  <% if(pending.length === 0) { %>
+    <p style="color:var(--ivoire-muted);font-size:.83rem;margin-bottom:2rem;">Aucune demande en attente.</p>
+  <% } else { %>
+    <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:3rem;">
+      <% pending.forEach(u => { %>
+      <div class="member-event-card" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ivoire);"><%=u.pseudo%></div>
+          <div style="font-size:.72rem;color:var(--ivoire-muted);"><%=u.email%> — <%=u.profil%> — Pass <%=u.subscription.plan%></div>
+          <div style="font-size:.65rem;color:var(--ivoire-muted);margin-top:.2rem;">Inscrit le <%= new Date(u.createdAt).toLocaleDateString('fr-FR') %></div>
+        </div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
+          <form action="/admin/validate/<%=u.id%>" method="post">
+            <button class="btn-primary" style="padding:.5rem 1.2rem;font-size:.65rem;">✓ Valider</button>
+          </form>
+          <form action="/admin/reject/<%=u.id%>" method="post">
+            <button class="btn-rose" style="padding:.5rem 1.2rem;font-size:.65rem;">✕ Rejeter</button>
+          </form>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <!-- ACTIFS -->
+  <h2 class="member-section-title">Membres actifs</h2>
+  <% if(active.length === 0) { %>
+    <p style="color:var(--ivoire-muted);font-size:.83rem;margin-bottom:2rem;">Aucun membre actif.</p>
+  <% } else { %>
+    <div style="display:flex;flex-direction:column;gap:.8rem;margin-bottom:3rem;">
+      <% active.forEach(u => { %>
+      <div class="member-event-card" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ivoire);"><%=u.pseudo%></div>
+          <div style="font-size:.72rem;color:var(--ivoire-muted);"><%=u.email%> — <%=u.profil%> — Pass <%=u.subscription.plan%></div>
+          <div style="font-size:.65rem;color:var(--or);margin-top:.2rem;">Validé le <%= new Date(u.validatedAt).toLocaleDateString('fr-FR') %></div>
+        </div>
+        <span class="pass-badge pass-vip">Actif</span>
+      </div>
+      <% }) %>
+    </div>
+  <% } %>
+
+
+
+</div>
+
+<%- include('../layouts/footer') %>

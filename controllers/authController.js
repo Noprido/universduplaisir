@@ -3,6 +3,8 @@ const { readJSON, writeJSON } = require('../utils/jsonDB');
 
 const usersFile = path.join(__dirname, '../data/users.json');
 
+const bcrypt = require('bcryptjs');
+
 
 // ===============================
 // INSCRIPTION
@@ -24,17 +26,20 @@ exports.register = async (req, res) => {
 
         // Vérifications basiques
         if (!pseudo || !email || !profil || !pass) {
-            return res.status(400).json({
+            return res.render('pages/inscription', {
                 success: false,
-                message: "Tous les champs sont obligatoires."
+                message: "Tous les champs sont obligatoires.",
+                user: req.session.user || null
             });
         }
 
 
-        if (!age18) {
-            return res.status(400).json({
+        if (age18 !== 'on') {
+            // Age non confirmé
+            return res.render('pages/inscription', {
                 success: false,
-                message: "Vous devez confirmer avoir plus de 18 ans."
+                message: "Vous devez confirmer avoir plus de 18 ans.",
+                user: req.session.user || null
             });
         }
 
@@ -42,6 +47,14 @@ exports.register = async (req, res) => {
         // Lecture utilisateurs
         const users = await readJSON(usersFile);
 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.render('pages/inscription', {
+                success: false,
+                message: "Format d'email invalide.",
+                user: req.session.user || null
+            });
+        }
 
         // Vérification email existant
         const exists = users.find(
@@ -50,9 +63,10 @@ exports.register = async (req, res) => {
 
 
         if (exists) {
-            return res.status(409).json({
+            return res.render('pages/inscription', {
                 success: false,
-                message: "Cette adresse email est déjà utilisée."
+                message: "Cette adresse email est déjà utilisée.",
+                user: req.session.user || null
             });
         }
 
@@ -68,8 +82,6 @@ exports.register = async (req, res) => {
 
             profil,
 
-            pass,
-
             status: "pending",
 
             role: "member",
@@ -78,7 +90,7 @@ exports.register = async (req, res) => {
 
             subscription: {
                 active: false,
-                plan: null,
+                plan: pass,
                 expiresAt: null
             }
 
@@ -95,7 +107,8 @@ exports.register = async (req, res) => {
 
         return res.render('pages/inscription', {
             success: true,
-            message: "Votre demande d'inscription a été enregistrée."
+            message: "Votre demande d'inscription a été enregistrée.",
+            user: req.session.user || null
         });
 
 
@@ -105,12 +118,11 @@ exports.register = async (req, res) => {
         console.error("Erreur inscription :", error);
 
 
-        res.status(500).json({
-
-            success:false,
-
-            message:"Erreur serveur."
-
+       // Erreur serveur (catch)
+        return res.render('pages/inscription', {
+            success: false,
+            message: "Erreur serveur, veuillez réessayer.",
+            user: req.session.user || null
         });
 
     }
@@ -123,10 +135,62 @@ exports.register = async (req, res) => {
 // ===============================
 // LOGIN (préparation)
 // ===============================
-exports.login = async (req,res)=>{
 
-    res.json({
-        message:"Login à implémenter"
-    });
+exports.login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
+        if (!email || !password) {
+            return res.render('pages/login', {
+                message: "Tous les champs sont obligatoires.",
+                user: null
+            });
+        }
+
+        const users = await readJSON(usersFile);
+        const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+        if (!user) {
+            return res.render('pages/login', {
+                message: "Email ou mot de passe incorrect.",
+                user: null
+            });
+        }
+
+        if (user.status === 'pending') {
+            return res.render('pages/login', {
+                message: "Votre adhésion est en attente de validation. Contactez un administrateur.",
+                user: null
+            });
+        }
+
+        const valid = await bcrypt.compare(password, user.password);
+        if (!valid) {
+            return res.render('pages/login', {
+                message: "Email ou mot de passe incorrect.",
+                user: null
+            });
+        }
+
+        req.session.user = {
+            id: user.id,
+            pseudo: user.pseudo,
+            email: user.email,
+            profil: user.profil,
+            role: user.role,
+            subscription: user.subscription
+        };
+
+        if (user.role === 'admin') {
+            return res.redirect('/admin');
+        }
+        return res.redirect('/member/dashboard');
+
+    } catch (error) {
+        console.error("Erreur login :", error);
+        return res.render('pages/login', {
+            message: "Erreur serveur, veuillez réessayer.",
+            user: null
+        });
+    }
 };

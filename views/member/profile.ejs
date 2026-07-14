@@ -1,0 +1,32 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/navigation') %>
+<%- include('../layouts/mobileMenu') %>
+
+<div id="page-member">
+  <div class="member-layout">
+    <div class="member-sidebar">
+      <div class="member-avatar"><%= user.pseudo.substring(0,2).toUpperCase() %></div>
+      <div class="member-name-small"><%= user.pseudo %></div>
+      <div class="member-id-small">ID : <%= user.id %></div>
+      <ul class="sidebar-nav">
+        <li><a href="/member/dashboard">◈ &nbsp;Tableau de bord</a></li>
+        <li class="active"><a href="/member/profile">◈ &nbsp;Mon profil</a></li>
+        <li><a href="/member/events">◈ &nbsp;Mes événements</a></li>
+        <li><a href="/member/pass">◈ &nbsp;Mon pass</a></li>
+        <li style="margin-top:2rem;border-top:.5px solid var(--glass-border);padding-top:1rem;"><a href="/auth/logout" style="color:var(--rose)!important;">◈ &nbsp;Déconnexion</a></li>
+      </ul>
+    </div>
+    <div class="member-main">
+      <div class="section-label">Mon compte</div>
+      <h1 class="section-title" style="font-size:clamp(1.8rem,6vw,2.8rem);">Mon <em>profil</em></h1>
+      <div style="background:var(--noir2);border:.5px solid var(--glass-border);padding:2rem;max-width:480px;">
+        <div class="form-group"><div class="form-label">Pseudo</div><div style="color:var(--ivoire);font-size:.88rem;padding:.85rem 1rem;border:.5px solid rgba(201,164,87,.12);"><%= user.pseudo %></div></div>
+        <div class="form-group"><div class="form-label">Email</div><div style="color:var(--ivoire);font-size:.88rem;padding:.85rem 1rem;border:.5px solid rgba(201,164,87,.12);"><%= user.email %></div></div>
+        <div class="form-group"><div class="form-label">Profil</div><div style="color:var(--ivoire);font-size:.88rem;padding:.85rem 1rem;border:.5px solid rgba(201,164,87,.12);"><%= user.profil %></div></div>
+        <div class="form-group"><div class="form-label">Membre depuis</div><div style="color:var(--ivoire);font-size:.88rem;padding:.85rem 1rem;border:.5px solid rgba(201,164,87,.12);"><%= new Date(user.createdAt).toLocaleDateString('fr-FR') %></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../layouts/footer') %>

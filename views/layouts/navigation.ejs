@@ -2,10 +2,21 @@
 <nav>
   <div class="nav-logo" onclick="(location.assign('/'))">UNIVERS DU <span>PLAISIR</span></div>
   <div class="nav-links">
-    <a href="/">Accueil</a>
-    <a href="/about">À propos</a>
-    <a href="/events">Événements</a>
-    <a href="/auth/register" class="nav-cta">Rejoindre</a>
+      <a href="/">Accueil</a>
+      <a href="/about">À propos</a>
+      <a href="/events">Événements</a>
+      <a href="/#contact">Contact</a>
+      <% if(user) { %>
+          <% if(user.role === 'admin') { %>
+              <a href="/admin" class="nav-cta">Panel Admin</a>
+          <% } else { %>
+              <a href="/member/dashboard" class="nav-cta">Espace membre</a>
+          <% } %>
+          <a href="/auth/logout">Déconnexion</a>
+      <% } else { %>
+          <a href="/auth/login">Connexion</a>
+          <a href="/auth/register" class="nav-cta">Rejoindre</a>
+      <% } %>
   </div>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>

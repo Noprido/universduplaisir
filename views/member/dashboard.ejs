@@ -1,48 +1,40 @@
 <%- include('../layouts/header') %>
-
 <%- include('../layouts/navigation') %>
 <%- include('../layouts/mobileMenu') %>
 
-<!-- ═══════════ MEMBER ═══════════ -->
 <div id="page-member">
   <div class="member-layout">
     <div class="member-sidebar">
-      <div class="member-avatar">VN</div>
-      <div class="member-name-small">Fantôme_Rose</div>
-      <div class="member-id-small">ID : VN-2024-0089</div>
+      <div class="member-avatar"><%= user.pseudo.substring(0,2).toUpperCase() %></div>
+      <div class="member-name-small"><%= user.pseudo %></div>
+      <div class="member-id-small">ID : <%= user.id %></div>
       <ul class="sidebar-nav">
-        <li class="active">◈ &nbsp;Tableau de bord</li>
-        <li>◈ &nbsp;Mon profil</li>
-        <li>◈ &nbsp;Mes événements</li>
-        <li>◈ &nbsp;Mon pass</li>
-        <li>◈ &nbsp;Messages admin</li>
-        <li style="margin-top:2rem;border-top:.5px solid var(--glass-border);padding-top:1rem;color:var(--rose)!important;" onclick="showPage('home')">◈ &nbsp;Déconnexion</li>
+        <li class="active"><a href="/member/dashboard">◈ &nbsp;Tableau de bord</a></li>
+        <li><a href="/member/profile">◈ &nbsp;Mon profil</a></li>
+        <li><a href="/member/events">◈ &nbsp;Mes événements</a></li>
+        <li><a href="/member/pass">◈ &nbsp;Mon pass</a></li>
+        <li style="margin-top:2rem;border-top:.5px solid var(--glass-border);padding-top:1rem;color:var(--rose)!important;"><a href="/auth/logout" style="color:var(--rose)!important;">◈ &nbsp;Déconnexion</a></li>
       </ul>
     </div>
     <div class="member-main">
       <div class="section-label">Bienvenue</div>
-      <h1 class="section-title" style="font-size:clamp(1.8rem,6vw,2.8rem);">Fantôme_<em>Rose</em></h1>
+      <h1 class="section-title" style="font-size:clamp(1.8rem,6vw,2.8rem);"><%= user.pseudo.split('_')[0] %>_<em><%= user.pseudo.split('_')[1] || '' %></em></h1>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-label">ID Membre</div><div class="stat-val" style="font-size:1rem;letter-spacing:.04em;">VN-2024-0089</div><div class="stat-sub">Identifiant unique</div></div>
-        <div class="stat-card"><div class="stat-label">Pass</div><div class="stat-val">VIP</div><div class="stat-sub"><span class="pass-badge pass-vip">Actif</span></div></div>
-        <div class="stat-card"><div class="stat-label">Expiration</div><div class="stat-val" style="font-size:1rem;">31 Oct 25</div><div class="stat-sub">Auto-renouvellement</div></div>
-        <div class="stat-card"><div class="stat-label">Profil</div><div class="stat-val" style="font-size:1rem;">Couple</div><div class="stat-sub">Statut vérifié ✓</div></div>
+        <div class="stat-card"><div class="stat-label">ID Membre</div><div class="stat-val" style="font-size:1rem;letter-spacing:.04em;"><%= user.id %></div><div class="stat-sub">Identifiant unique</div></div>
+        <div class="stat-card"><div class="stat-label">Pass</div><div class="stat-val"><%= user.subscription.plan %></div><div class="stat-sub"><span class="pass-badge pass-vip">Actif</span></div></div>
+        <div class="stat-card"><div class="stat-label">Expiration</div><div class="stat-val" style="font-size:1rem;"><%= user.subscription.expiresAt ? new Date(user.subscription.expiresAt).toLocaleDateString('fr-FR') : '—' %></div><div class="stat-sub">Abonnement</div></div>
+        <div class="stat-card"><div class="stat-label">Profil</div><div class="stat-val" style="font-size:1rem;"><%= user.profil %></div><div class="stat-sub">Statut vérifié ✓</div></div>
       </div>
       <div class="member-section-title">Prochains événements</div>
+      <% events.forEach(event => { %>
       <div class="member-event-card">
         <div class="mem-ev-head">
-          <div class="event-date-block"><div class="event-day">15</div><div class="event-month">Août</div></div>
-          <div><div class="event-theme">Soirée Masquée</div><div class="event-name" style="font-size:1.1rem;">La Nuit des Masques</div><div class="event-meta"><div class="event-meta-item"><span class="icon">◷</span> 22h00 — 04h00</div></div></div>
+          <div class="event-date-block"><div class="event-day"><%= event.jour %></div><div class="event-month"><%= event.mois %></div></div>
+          <div><div class="event-theme"><%= event.theme %></div><div class="event-name" style="font-size:1.1rem;"><%= event.nom %></div><div class="event-meta"><div class="event-meta-item"><span class="icon">◷</span> <%= event.heureDebut %> — <%= event.heureFin %></div></div></div>
         </div>
-        <div class="event-address-box"><div class="event-address-label">📍 Adresse complète</div><div class="event-address-text">12 Rue des Arts, 75001 Paris<br><span style="font-size:.72rem;color:var(--or);">Accès : Interphone 3B — Dress code obligatoire</span></div></div>
+        <div class="event-address-box"><div class="event-address-label">📍 Adresse complète</div><div class="event-address-text"><%= event.adresse %><br><span style="font-size:.72rem;color:var(--or);"><%= event.acces %></span></div></div>
       </div>
-      <div class="member-event-card">
-        <div class="mem-ev-head">
-          <div class="event-date-block"><div class="event-day">20</div><div class="event-month">Sep</div></div>
-          <div><div class="event-theme">White Night</div><div class="event-name" style="font-size:1.1rem;">La Nuit Blanche</div><div class="event-meta"><div class="event-meta-item"><span class="icon">◷</span> 21h00 — 03h00</div></div></div>
-        </div>
-        <div class="event-address-box"><div class="event-address-label">📍 Adresse complète</div><div class="event-address-text">Villa Lumière, 69001 Lyon<br><span style="font-size:.72rem;color:var(--or);">Parking privé — Dress code : Blanc strict</span></div></div>
-      </div>
+      <% }) %>
     </div>
   </div>
 </div>

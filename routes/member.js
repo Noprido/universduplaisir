@@ -2,6 +2,12 @@ const router = require("express").Router();
 
 const memberController = require("../controllers/memberController");
 
+const authMiddleware = require('../middleware/auth');
+
+router.use(authMiddleware);
+
+router.get('/dashboard', memberController.dashboard);
+
 
 router.get("/", memberController.dashboard);
 

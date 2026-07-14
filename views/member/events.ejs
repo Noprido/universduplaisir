@@ -1,0 +1,44 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/navigation') %>
+<%- include('../layouts/mobileMenu') %>
+
+<div id="page-member">
+  <div class="member-layout">
+    <div class="member-sidebar">
+      <div class="member-avatar"><%= user.pseudo.substring(0,2).toUpperCase() %></div>
+      <div class="member-name-small"><%= user.pseudo %></div>
+      <div class="member-id-small">ID : <%= user.id %></div>
+      <ul class="sidebar-nav">
+        <li><a href="/member/dashboard">◈ &nbsp;Tableau de bord</a></li>
+        <li><a href="/member/profile">◈ &nbsp;Mon profil</a></li>
+        <li class="active"><a href="/member/events">◈ &nbsp;Mes événements</a></li>
+        <li><a href="/member/pass">◈ &nbsp;Mon pass</a></li>
+        <li style="margin-top:2rem;border-top:.5px solid var(--glass-border);padding-top:1rem;"><a href="/auth/logout" style="color:var(--rose)!important;">◈ &nbsp;Déconnexion</a></li>
+      </ul>
+    </div>
+    <div class="member-main">
+      <div class="section-label">Agenda</div>
+      <h1 class="section-title" style="font-size:clamp(1.8rem,6vw,2.8rem);">Mes <em>événements</em></h1>
+      <% if(events.length === 0) { %>
+        <p style="color:var(--ivoire-muted);font-size:.83rem;">Aucun événement à venir.</p>
+      <% } else { %>
+        <% events.forEach(event => { %>
+        <div class="member-event-card">
+          <div class="mem-ev-head">
+            <div class="event-date-block"><div class="event-day"><%= event.jour %></div><div class="event-month"><%= event.mois %></div></div>
+            <div>
+              <div class="event-theme"><%= event.theme %></div>
+              <div class="event-name" style="font-size:1.1rem;"><%= event.nom %></div>
+              <p style="font-size:.78rem;color:var(--ivoire-muted);margin:.3rem 0;"><%= event.description %></p>
+              <div class="event-meta"><div class="event-meta-item"><span class="icon">◷</span> <%= event.heureDebut %> — <%= event.heureFin %></div><div class="event-meta-item"><span class="icon">◈</span> <%= event.type %></div></div>
+            </div>
+          </div>
+          <div class="event-address-box"><div class="event-address-label">📍 Adresse complète</div><div class="event-address-text"><%= event.adresse %><br><span style="font-size:.72rem;color:var(--or);"><%= event.acces %></span></div></div>
+        </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include('../layouts/footer') %>

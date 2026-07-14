@@ -6,7 +6,16 @@ const authRoutes = require("./routes/auth");
 const memberRoutes = require("./routes/member");
 const adminRoutes = require("./routes/admin");
 
+const session = require('express-session');
+
 const app = express();
+
+app.use(session({
+    secret: 'univers-du-plaisir-secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24h
+}));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

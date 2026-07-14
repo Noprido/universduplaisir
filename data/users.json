@@ -1,18 +1,35 @@
 [
   {
-    "id": "1783884547924",
-    "pseudo": "Neque dolor tempore",
-    "email": "boteco@mailinator.com",
-    "profil": "homme",
-    "pass": "vip",
-    "status": "pending",
-    "role": "member",
-    "createdAt": "2026-07-12T19:29:07.925Z",
+    "id": "admin-001",
+    "pseudo": "Admin",
+    "email": "admin@admin.com",
+    "role": "admin",
+    "status": "active",
+    "password": "$2b$10$aC1zI67.8.LQ4EDt/9C07e2vVAVAufPuTXhGxcp2XB1cA.44iFxwW",
+    "profil": null,
+    "createdAt": "2025-01-01T00:00:00.000Z",
     "subscription": {
       "active": false,
       "plan": null,
       "expiresAt": null
     }
+  },
+  {
+    "id": "1783884547924",
+    "pseudo": "Neque dolor tempore",
+    "email": "boteco@mailinator.com",
+    "profil": "homme",
+    "pass": "vip",
+    "status": "active",
+    "role": "member",
+    "createdAt": "2026-07-12T19:29:07.925Z",
+    "subscription": {
+      "active": true,
+      "plan": null,
+      "expiresAt": null
+    },
+    "password": "$2b$10$HL2/NwJhkS5gkuswf5rn8ORS2Ih.xaTq0sF6zfYjpM1p0wlwJappy",
+    "validatedAt": "2026-07-13T17:18:22.784Z"
   },
   {
     "id": "1783884911361",
@@ -35,14 +52,16 @@
     "email": "bukuluzub@mailinator.com",
     "profil": "femme",
     "pass": "premium",
-    "status": "pending",
+    "status": "active",
     "role": "member",
     "createdAt": "2026-07-12T19:36:41.107Z",
     "subscription": {
-      "active": false,
+      "active": true,
       "plan": null,
       "expiresAt": null
-    }
+    },
+    "password": "$2b$10$zBydyENcXuTE7KjLO/KDx.8zBmdRdztRhLgorPPjeHH1u25kVFrhu",
+    "validatedAt": "2026-07-13T17:27:02.569Z"
   },
   {
     "id": "1783885062604",
@@ -223,5 +242,84 @@
       "plan": null,
       "expiresAt": null
     }
+  },
+  {
+    "id": "1783949472597",
+    "pseudo": "Et neque culpa omni",
+    "email": "pemen@mailinator.com",
+    "profil": "femme",
+    "pass": "premium",
+    "status": "pending",
+    "role": "member",
+    "createdAt": "2026-07-13T13:31:12.598Z",
+    "subscription": {
+      "active": false,
+      "plan": null,
+      "expiresAt": null
+    }
+  },
+  {
+    "id": "1783949613252",
+    "pseudo": "Est dolores ut mole",
+    "email": "roruxu@mailinator.com",
+    "profil": "femme",
+    "pass": "standard",
+    "status": "pending",
+    "role": "member",
+    "createdAt": "2026-07-13T13:33:33.252Z",
+    "subscription": {
+      "active": false,
+      "plan": null,
+      "expiresAt": null
+    }
+  },
+  {
+    "id": "1783949650713",
+    "pseudo": "Aliquam maiores aute",
+    "email": "pamugevyhu@mailinator.com",
+    "profil": "femme",
+    "pass": "vip",
+    "status": "active",
+    "role": "member",
+    "createdAt": "2026-07-13T13:34:10.713Z",
+    "subscription": {
+      "active": true,
+      "plan": null,
+      "expiresAt": null
+    },
+    "password": "$2b$10$umEgkPbWLRSbb5P4JIIv9.GQfsOpx7YUMVKdoXfBI0vZ.WNCqdFKK",
+    "validatedAt": "2026-07-14T18:03:24.714Z"
+  },
+  {
+    "id": "1784052269364",
+    "pseudo": "Noprido",
+    "email": "noprido@gmail.com",
+    "profil": "homme",
+    "status": "active",
+    "role": "member",
+    "createdAt": "2026-07-14T18:04:29.365Z",
+    "subscription": {
+      "active": true,
+      "plan": "premium",
+      "expiresAt": null
+    },
+    "password": "$2b$10$o71DGwGMTfdOW9TipvEZDuT2k9KYWQr.uXr2J85JxgqephyK1KwcG",
+    "validatedAt": "2026-07-14T18:05:03.251Z"
+  },
+  {
+    "id": "1784053267834",
+    "pseudo": "aaaaaaaaa",
+    "email": "aaa@aa.fr",
+    "profil": "femme",
+    "status": "active",
+    "role": "member",
+    "createdAt": "2026-07-14T18:21:07.836Z",
+    "subscription": {
+      "active": true,
+      "plan": "standard",
+      "expiresAt": null
+    },
+    "password": "$2b$10$o71DGwGMTfdOW9TipvEZDuT2k9KYWQr.uXr2J85JxgqephyK1KwcG",
+    "validatedAt": "2026-07-14T18:24:36.002Z"
   }
 ]

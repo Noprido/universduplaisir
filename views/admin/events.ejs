@@ -1,0 +1,59 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/navigation') %>
+<%- include('../layouts/mobileMenu') %>
+
+<div style="padding:7rem 1.5rem 3rem;max-width:900px;margin:0 auto;">
+
+  <div class="section-label">Administration</div>
+  <h1 class="section-title">Gestion des <em>événements</em></h1>
+
+  <!-- FORMULAIRE AJOUT -->
+  <div style="background:var(--noir2);border:.5px solid var(--glass-border);padding:2rem;max-width:600px;margin:0 auto 3rem auto;">
+    <h2 class="member-section-title" style="font-size:1.3rem;">Ajouter un événement</h2>
+    <form action="/admin/events/add" method="post">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="form-group"><label class="form-label">Nom</label><input type="text" name="nom" class="form-input" required></div>
+        <div class="form-group"><label class="form-label">Thème</label><input type="text" name="theme" class="form-input" required></div>
+        <div class="form-group"><label class="form-label">Jour</label><input type="text" name="jour" class="form-input" placeholder="15" required></div>
+        <div class="form-group"><label class="form-label">Mois</label><input type="text" name="mois" class="form-input" placeholder="Août" required></div>
+        <div class="form-group"><label class="form-label">Heure début</label><input type="text" name="heureDebut" class="form-input" placeholder="22h00" required></div>
+        <div class="form-group"><label class="form-label">Heure fin</label><input type="text" name="heureFin" class="form-input" placeholder="04h00" required></div>
+        <div class="form-group"><label class="form-label">Type</label><input type="text" name="type" class="form-input" placeholder="Privée, Mixte..." required></div>
+        <div class="form-group"><label class="form-label">Adresse</label><input type="text" name="adresse" class="form-input" required></div>
+      </div>
+      <div class="form-group"><label class="form-label">Description</label><textarea name="description" class="form-input" rows="3" required></textarea></div>
+      <div class="form-group"><label class="form-label">Accès / Infos</label><input type="text" name="acces" class="form-input" placeholder="Interphone 3B..."></div>
+      <button class="btn-primary" style="padding:.7rem 2rem;">Ajouter l'événement</button>
+    </form>
+  </div>
+
+  <div style="margin-top:2rem;">
+    <a href="/admin" class="btn-outline">← Retour au dashboard</a>
+  </div>
+
+  <!-- LISTE EVENTS -->
+  <h2 class="member-section-title">Événements existants</h2>
+  <% if(events.length === 0) { %>
+    <p style="color:var(--ivoire-muted);font-size:.83rem;">Aucun événement.</p>
+  <% } else { %>
+    <div style="display:flex;flex-direction:column;gap:.8rem;">
+      <% events.forEach(e => { %>
+      <div class="member-event-card" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ivoire);"><%=e.nom%></div>
+          <div style="font-size:.72rem;color:var(--ivoire-muted);"><%=e.jour%> <%=e.mois%> — <%=e.heureDebut%> à <%=e.heureFin%></div>
+          <div style="font-size:.65rem;color:var(--ivoire-muted);margin-top:.2rem;"><%=e.adresse%></div>
+        </div>
+        <form action="/admin/events/delete/<%=e.id%>" method="post">
+          <button class="btn-rose" style="padding:.5rem 1.2rem;font-size:.65rem;">✕ Supprimer</button>
+        </form>
+      </div>
+      <% }) %>
+    </div>
+  <% } %>
+
+
+
+</div>
+
+<%- include('../layouts/footer') %>

@@ -1,0 +1,50 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/navigation') %>
+<%- include('../layouts/mobileMenu') %>
+
+<div id="page-member">
+  <div class="member-layout">
+    <div class="member-sidebar">
+      <div class="member-avatar"><%= user.pseudo.substring(0,2).toUpperCase() %></div>
+      <div class="member-name-small"><%= user.pseudo %></div>
+      <div class="member-id-small">ID : <%= user.id %></div>
+      <ul class="sidebar-nav">
+        <li><a href="/member/dashboard">◈ &nbsp;Tableau de bord</a></li>
+        <li><a href="/member/profile">◈ &nbsp;Mon profil</a></li>
+        <li><a href="/member/events">◈ &nbsp;Mes événements</a></li>
+        <li class="active"><a href="/member/pass">◈ &nbsp;Mon pass</a></li>
+        <li style="margin-top:2rem;border-top:.5px solid var(--glass-border);padding-top:1rem;"><a href="/auth/logout" style="color:var(--rose)!important;">◈ &nbsp;Déconnexion</a></li>
+      </ul>
+    </div>
+    <div class="member-main">
+      <div class="section-label">Abonnement</div>
+      <h1 class="section-title" style="font-size:clamp(1.8rem,6vw,2.8rem);">Mon <em>pass</em></h1>
+      <div style="background:var(--noir2);border:.5px solid var(--or);padding:2.5rem;max-width:400px;text-align:center;position:relative;">
+        <div style="position:absolute;top:0;left:2rem;right:2rem;height:1px;background:linear-gradient(to right,transparent,var(--or),transparent);"></div>
+        <div style="font-size:2rem;margin-bottom:.8rem;">
+          <% if(user.subscription.plan === 'vip') { %>👑
+          <% } else if(user.subscription.plan === 'premium') { %>💎
+          <% } else { %>🎭<% } %>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--or);text-transform:uppercase;letter-spacing:.2em;"><%= user.subscription.plan %></div>
+        <div style="font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ivoire-muted);margin:.5rem 0 1.5rem;">Pass membre</div>
+        <div style="border-top:.5px solid var(--glass-border);padding-top:1.5rem;">
+          <div class="stat-label">ID Membre</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ivoire);margin-bottom:1rem;"><%= user.id %></div>
+          <div class="stat-label">Statut</div>
+          <div><span class="pass-badge pass-vip">Actif</span></div>
+          <div class="stat-label" style="margin-top:1rem;">Expiration</div>
+          <div style="font-size:.88rem;color:var(--ivoire);"><%= user.subscription.expiresAt ? new Date(user.subscription.expiresAt).toLocaleDateString('fr-FR') : 'Non définie' %></div>
+        </div>
+      </div>
+      <p style="font-size:.75rem;color:var(--ivoire-muted);margin-top:1.5rem;">Pour renouveler ou changer de pass, contactez un administrateur.</p>
+      <div class="contact-methods" style="max-width:400px;margin-top:1rem;">
+        <a class="contact-btn" href="#"><span>💬</span><div><div style="font-weight:500;">WhatsApp</div></div></a>
+        <a class="contact-btn" href="#"><span>✈️</span><div><div style="font-weight:500;">Telegram</div></div></a>
+        <a class="contact-btn" href="#"><span>📧</span><div><div style="font-weight:500;">Email</div></div></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../layouts/footer') %>

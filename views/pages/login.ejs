@@ -1,0 +1,38 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/navigation') %>
+<%- include('../layouts/mobileMenu') %>
+
+<div class="inscription-wrapper">
+    <div class="inscription-card">
+        <div class="section-label" style="text-align:center;">Espace membre</div>
+        <h1 style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--ivoire);text-align:center;margin-bottom:.5rem;">Se <em style="font-style:italic;color:var(--or);">connecter</em></h1>
+        <p style="text-align:center;font-size:.78rem;color:var(--ivoire-muted);margin-bottom:2rem;">Accédez à votre espace membre.</p>
+
+        <% if(message) { %>
+        <div style="background:rgba(194,24,91,.08);border:.5px solid rgba(194,24,91,.35);color:#e57;padding:.8rem 1rem;font-size:.78rem;margin-bottom:1.2rem;text-align:center;">
+            <%= message %>
+        </div>
+        <% } %>
+
+        <form action="/auth/login" method="post">
+            <div class="form-group">
+                <label class="form-label">Adresse email</label>
+                <input type="email" name="email" class="form-input" placeholder="votre@email.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Mot de passe</label>
+                <input type="password" name="password" class="form-input" placeholder="••••••••">
+            </div>
+            <button class="btn-primary btn-full" style="padding:1rem;">Accéder à mon espace</button>
+        </form>
+
+        <p style="text-align:center;font-size:.72rem;color:var(--ivoire-muted);margin-top:1.2rem;">
+            Pas encore membre ? <a href="/auth/register" style="color:var(--or);text-decoration:none;">Faire une demande</a>
+        </p>
+        <p style="text-align:center;font-size:.72rem;color:var(--ivoire-muted);margin-top:.5rem;">
+            Mot de passe non reçu ? Contactez un administrateur.
+        </p>
+    </div>
+</div>
+
+<%- include('../layouts/footer') %>

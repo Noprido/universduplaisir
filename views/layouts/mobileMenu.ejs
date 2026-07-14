@@ -1,8 +1,18 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a onclick="(location.assign('/'))">Accueil</a>
-  <a onclick="(location.assign('/about'))">À propos</a>
-  <a onclick="(location.assign('/events'))">Événements</a>
-  <a onclick="(location.assign('/auth/register'))" class="menu-cta">Rejoindre le club</a>
-  <a onclick="(location.assign('/member'))" style="font-size:1rem!important;color:var(--or)!important;">★ Espace membre</a>
+    <a onclick="(location.assign('/'))">Accueil</a>
+    <a onclick="(location.assign('/about'))">À propos</a>
+    <a onclick="(location.assign('/events'))">Événements</a>
+    <a onclick="(location.assign('/#contact'))">Contact</a>
+    <% if(user) { %>
+        <% if(user.role === 'admin') { %>
+            <a onclick="(location.assign('/admin'))" class="menu-cta">Panel Admin</a>
+        <% } else { %>
+            <a onclick="(location.assign('/member/dashboard'))" style="font-size:1rem!important;color:var(--or)!important;">★ Espace membre</a>
+        <% } %>
+        <a onclick="(location.assign('/auth/logout'))">Déconnexion</a>
+    <% } else { %>
+        <a onclick="(location.assign('/auth/login'))">Connexion</a>
+        <a onclick="(location.assign('/auth/register'))" class="menu-cta">Rejoindre le club</a>
+    <% } %>
 </div>

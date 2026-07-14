@@ -4,14 +4,24 @@
 <%- include('../layouts/mobileMenu') %>
 
 <!-- ═══════════ INSCRIPTION ═══════════ -->
- <form action="/auth/register" method="post">
 <div id="page-inscription">
   <div class="inscription-wrapper">
     <div class="inscription-card">
       <div class="section-label" style="text-align:center;">Rejoindre le club</div>
       <h1 style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--ivoire);text-align:center;margin-bottom:.5rem;">Demande d'<em style="font-style:italic;color:var(--or);">inscription</em></h1>
       <p style="text-align:center;font-size:.78rem;color:var(--ivoire-muted);margin-bottom:2rem;">Un administrateur vous contactera pour finaliser votre adhésion.</p>
+      <% if(message && !success) { %>
+        <div style="background:rgba(194,24,91,.08);border:.5px solid rgba(194,24,91,.35);color:#e57;padding:.8rem 1rem;font-size:.78rem;margin-bottom:1.2rem;text-align:center;">
+          <%= message %>
+        </div>
+      <% } %>
+      <% if(message && success) { %>
+        <div style="background:rgba(24, 194, 27, 0.08);border:.5px solid rgba(44, 194, 24, 0.35);color:rgb(103, 238, 85);padding:.8rem 1rem;font-size:.78rem;margin-bottom:1.2rem;text-align:center;">
+          <%= message %>
+        </div>
+      <% } %>
       <% if(!success) { %>
+ <form action="/auth/register" method="post">
 
        <div id="inscriptionForm">
         <div class="form-group"><label class="form-label">Votre pseudo</label><input type="text" name="pseudo" class="form-input" placeholder="Pseudo affiché sur le site" id="pseudo"></div>
@@ -41,9 +51,14 @@
           </label>
         </div>
         <button class="btn-primary btn-full" style="padding:1rem;">Envoyer ma demande</button>
+        <p style="text-align:center;font-size:.72rem;color:var(--ivoire-muted);margin-top:1.2rem;">
+            Déjà membre ? <a href="/auth/login" style="color:var(--or);text-decoration:none;">Se connecter</a>
+        </p>
         <p style="text-align:center;font-size:.7rem;color:var(--ivoire-muted);margin-top:.8rem;">🔒 Vos données ne sont jamais partagées.</p>
       </div>
-      
+
+ </form>
+     
 
       <% }else{ %>
 
@@ -64,7 +79,6 @@
     </div>
   </div>
 </div>
- </form>
 
 
 <%- include('../layouts/footer') %>
