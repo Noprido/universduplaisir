@@ -4,6 +4,7 @@ const { readJSON, writeJSON } = require('../utils/jsonDB');
 
 const usersFile = path.join(__dirname, '../data/users.json');
 const eventsFile = path.join(__dirname, '../data/events.json');
+const passwordsFile = path.join(__dirname, '../data/passwords.json');
 
 // Génère un mot de passe aléatoire
 function generatePassword(length = 10) {
@@ -17,6 +18,7 @@ function generatePassword(length = 10) {
 
 exports.dashboard = async (req, res) => {
     const users = await readJSON(usersFile);
+    const passwords = await readJSON(passwordsFile);
     const pending = users.filter(u => u.status === 'pending');
     const active = users.filter(u => u.status === 'active');
     const rejected = users.filter(u => u.status === 'rejected');
@@ -25,8 +27,9 @@ exports.dashboard = async (req, res) => {
         pending,
         active,
         rejected,
+        passwords,
         admin: req.session.user,
-        user: req.session.user || null,
+        user: req.session.user 
     });
 };
 
@@ -45,8 +48,14 @@ exports.validateMember = async (req, res) => {
 
     await writeJSON(usersFile, users);
 
-    // Log en console en attendant l'email
-    console.log(`✅ Membre validé : ${users[index].email} | Mot de passe : ${plainPassword}`);
+    const passwords = await readJSON(passwordsFile);
+    const filtered = passwords.filter(p => p.userId !== users[index].id);
+    filtered.push({
+        userId: users[index].id,
+        plainPassword,
+        generatedAt: new Date().toISOString()
+    });
+    await writeJSON(passwordsFile, filtered);
 
     res.redirect('/admin');
 };
@@ -60,7 +69,7 @@ exports.rejectMember = async (req, res) => {
     await writeJSON(usersFile, users);
 
     res.redirect('/admin');
-};
+}; 
 
 exports.events = async (req, res) => {
     const events = await readJSON(eventsFile);
@@ -68,7 +77,7 @@ exports.events = async (req, res) => {
         title: "Gestion des événements",
         events,
         admin: req.session.user,        
-        user: req.session.user || null,
+        user: req.session.user,
     });
 };
 
@@ -94,4 +103,14 @@ exports.deleteEvent = async (req, res) => {
     events = events.filter(e => e.id !== req.params.id);
     await writeJSON(eventsFile, events);
     res.redirect('/admin/events');
+};
+
+exports.passwords = async (req, res) => {
+    const passwordsFile = path.join(__dirname, '../data/passwords.json');
+    const passwords = await readJSON(passwordsFile);
+    res.render('admin/passwords', {
+        title: 'Mots de passe membres',
+        passwords,
+        admin: req.session.user
+    });
 };

@@ -1,0 +1,137 @@
+[
+  {
+    "id": "1",
+    "prenom": "Anaïs",
+    "age": 26,
+    "ville": "Paris",
+    "description": "Jeune femme douce et curieuse, recherche rencontre sans prise de tête dans la bonne humeur.",
+    "photo": "https://pbs.twimg.com/media/HNNOJg2aUAAisbh.jpg:large",
+    "actif": true
+  },
+  {
+    "id": "2",
+    "prenom": "Carole",
+    "age": 31,
+    "ville": "Lyon",
+    "description": "Femme assumée, aimant la vie nocturne et les belles rencontres. Sérieuse s'abstenir.",
+    "photo": "https://pbs.twimg.com/media/HL5OqfebQAABUza.jpg:small",
+    "actif": true
+  },
+  {
+    "id": "3",
+    "prenom": "Sofia",
+    "age": 28,
+    "ville": "Bordeaux",
+    "description": "Passionnée de voyages et de gastronomie. Cherche complicité et moments partagés.",
+    "photo": "https://pbs.twimg.com/media/HKy64EwakAADUqh.jpg:small",
+    "actif": false
+  },
+  {
+    "id": "4",
+    "prenom": "Jade",
+    "age": 24,
+    "ville": "Marseille",
+    "description": "Spontanée et aventurière. Aime les soirées intenses et les rencontres authentiques.",
+    "photo": "https://pbs.twimg.com/media/HK9hEiUWEAApfuF.jpg:small",
+    "actif": true
+  },
+  {
+    "id": "5",
+    "prenom": "Lena",
+    "age": 29,
+    "ville": "Toulouse",
+    "description": "Discrète mais passionnée. Recherche une connexion réelle, sans artifices.",
+    "photo": "https://pbs.twimg.com/media/HLN-nF9WEAEjx03.jpg:small",
+    "actif": true
+  },
+  {
+    "id": "6",
+    "prenom": "Camille",
+    "age": 27,
+    "ville": "Nantes",
+    "description": "Curieuse et ouverte d'esprit, j'aime les échanges sincères et les soirées qui durent.",
+    "photo": "https://pbs.twimg.com/media/HLvk7CMWgAAGlzA.jpg:large",
+    "actif": true
+  },
+  {
+    "id": "7",
+    "prenom": "Inès",
+    "age": 33,
+    "ville": "Lille",
+    "description": "Femme libre et épanouie. Cherche rencontres sans étiquette ni contrainte.",
+    "photo": "https://pbs.twimg.com/media/HG2okwWaIAARirB.jpg:small",
+    "actif": false
+  },
+  {
+    "id": "8",
+    "prenom": "Chloé",
+    "age": 25,
+    "ville": "Strasbourg",
+    "description": "Jeune et dynamique, j'assume mes envies et recherche quelqu'un dans le même état d'esprit.",
+    "photo": "https://pbs.twimg.com/media/HM4OpIjWQAEhQVc.jpg:small",
+    "actif": true
+  },
+  {
+    "id": "9",
+    "prenom": "Manon",
+    "age": 30,
+    "ville": "Nice",
+    "description": "Méditerranéenne dans l'âme, solaire et passionnée. Les belles rencontres sont ma philosophie.",
+    "photo": "https://pbs.twimg.com/media/F-NvmdVaEAAtyAV.jpg:small",
+    "actif": true
+  },
+  {
+    "id": "10",
+    "prenom": "Elisa",
+    "age": 22,
+    "ville": "Montpellier",
+    "description": "Étudiante curieuse de la vie sous toutes ses formes. Recherche complicité et bonne humeur.",
+    "photo": "https://pbs.twimg.com/media/HL2YsFgWgAAW7a9.jpg:small",
+    "actif": true
+  },
+  {
+    "id": "11",
+    "prenom": "Laura",
+    "age": 35,
+    "ville": "Rennes",
+    "description": "Femme mature et assumée, recherche rencontre de qualité avec quelqu'un de vrai.",
+    "photo": "https://pbs.twimg.com/media/E8zK8j8VcAUCxor.jpg:small",
+    "actif": false
+  },
+  {
+    "id": "12",
+    "prenom": "Yasmine",
+    "age": 27,
+    "ville": "Paris",
+    "description": "Sensuelle et intelligente, j'aime les conversations profondes autant que les soirées mémorables.",
+    "photo": "https://pbs.twimg.com/media/Fe-lduRXgAA7xVu.jpg:small",
+    "actif": true
+  },
+  {
+    "id": "13",
+    "prenom": "Noémie",
+    "age": 32,
+    "ville": "Bordeaux",
+    "description": "Épicurienne assumée. La vie est trop courte pour les rencontres fades.",
+    "photo": "https://pbs.twimg.com/media/F6qtgv5aYAAzlWC.jpg:small",
+    "actif": true
+  },
+  {
+    "id": "14",
+    "prenom": "Salomé",
+    "age": 26,
+    "ville": "Lyon",
+    "description": "Romantique dans l'âme mais moderne dans ses envies. Cherche quelqu'un qui ose.",
+    "photo": "https://pbs.twimg.com/media/FTdDHh8VUAAxkaF.jpg:small",
+    "actif": true
+  },
+  {
+    "id": "15",
+    "prenom": "Ambre",
+    "age": 23,
+    "ville": "Toulouse",
+    "description": "Spontanée et sans prise de tête. Les belles rencontres commencent toujours par un sourire.",
+    "photo": "https://pbs.twimg.com/media/E11iAxOVcAU3ny5.jpg:large",
+    "actif": false
+  }
+]

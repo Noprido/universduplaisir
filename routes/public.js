@@ -11,5 +11,7 @@ router.get("/events", publicController.events);
 
 router.get("/inscription", publicController.inscription);
 
+router.get('/rencontres', publicController.rencontres);
+
 
 module.exports = router;

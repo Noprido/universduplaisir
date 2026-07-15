@@ -1,0 +1,34 @@
+<div class="ticker-section" onclick="location.assign('/rencontres')">
+    <div class="section-label" style="margin-bottom:.8rem;">🔴 En ce moment</div>
+    <div class="ticker-list" id="tickerList"></div>
+</div>
+
+<script>
+const tickerProfiles = <%- JSON.stringify(profiles) %>;
+const tickerList = document.getElementById('tickerList');
+const messages = ['recherche un plan cul dans l\'immédiat', 'est disponible ce soir', 'cherche une rencontre éphémère maintenant'];
+let tickerIndex = 0;
+
+function randomTime(){
+    const mins = Math.floor(Math.random() * 9) + 1;
+    return `il y a ${mins} min`;
+}
+
+function addTickerItem(){
+    const p = tickerProfiles[Math.floor(Math.random() * tickerProfiles.length)];
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+    const item = document.createElement('div');
+    item.className = 'ticker-item';
+    item.innerHTML = `
+        <span class="ticker-dot"></span>
+        <span><span class="ticker-name">${p.prenom}</span> ${msg}</span>
+        <span class="ticker-time">${randomTime()}</span>
+    `;
+    tickerList.insertBefore(item, tickerList.firstChild);
+    if(tickerList.children.length > 4) tickerList.removeChild(tickerList.lastChild);
+}
+
+addTickerItem();
+addTickerItem();
+setInterval(addTickerItem, 3000);
+</script>

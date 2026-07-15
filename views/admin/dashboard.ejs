@@ -55,6 +55,12 @@
           <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ivoire);"><%=u.pseudo%></div>
           <div style="font-size:.72rem;color:var(--ivoire-muted);"><%=u.email%> — <%=u.profil%> — Pass <%=u.subscription.plan%></div>
           <div style="font-size:.65rem;color:var(--or);margin-top:.2rem;">Validé le <%= new Date(u.validatedAt).toLocaleDateString('fr-FR') %></div>
+          <% const pwd = passwords.find(p => p.userId === u.id); %>
+          <% if(passwords.find(p => p.userId === u.id)) { %>
+          <div style="font-size:.65rem;color:var(--ivoire-muted);margin-top:.2rem;">
+              Mot de passe : <span style="color:var(--or);letter-spacing:.05em;"><%= pwd.plainPassword %></span>
+          </div>
+          <% } %>
         </div>
         <span class="pass-badge pass-vip">Actif</span>
       </div>

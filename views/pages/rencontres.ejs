@@ -1,0 +1,47 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/navigation') %>
+<%- include('../layouts/mobileMenu') %>
+
+<div class="page-hero">
+    <div class="section-label">Espace rencontres</div>
+    <h1 class="section-title">Profils <em>disponibles</em></h1>
+    <p class="section-sub">Des profils vérifiés, des rencontres authentiques. Connectez-vous pour contacter.</p>
+</div>
+
+<section>
+    <div class="profiles-grid">
+        <% profiles.forEach(p => { %>
+        <div class="profile-card">
+            <div class="profile-img-wrap">
+                <img src="<%= p.photo %>" alt="<%= p.prenom %>" class="profile-img">
+                <div class="profile-status <%= p.actif ? 'online' : 'offline' %>">
+                    <span class="status-dot"></span>
+                    <%= p.actif ? 'En ligne' : 'Hors ligne' %>
+                </div>
+            </div>
+            <div class="profile-body">
+                <div class="profile-head">
+                    <div>
+                        <div class="profile-name"><%= p.prenom %>, <span class="profile-age"><%= p.age %> ans</span></div>
+                        <div class="profile-ville">📍 <%= p.ville %></div>
+                    </div>
+                </div>
+                <p class="profile-desc"><%= p.description %></p>
+                <% if(user) { %>
+                    <div class="profile-contacts">
+                        <a href="https://wa.me/XXXXX" target="_blank" class="contact-pill whatsapp">💬 WhatsApp</a>
+                        <a href="tel:+XXXXX" class="contact-pill tel">📞 Appeler</a>
+                        <a href="https://snapchat.com/add/XXXXX" target="_blank" class="contact-pill snap">👻 Snapchat</a>
+                    </div>
+                <% } else { %>
+                    <a href="/auth/register" class="btn-primary btn-full" style="margin-top:1rem;font-size:.72rem;">
+                        Contacter <%= p.prenom %> →
+                    </a>
+                <% } %>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</section>
+
+<%- include('../layouts/footer') %>

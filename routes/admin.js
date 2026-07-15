@@ -10,5 +10,6 @@ router.post("/reject/:id", adminController.rejectMember);
 router.get("/events", adminController.events);
 router.post("/events/add", adminController.addEvent);
 router.post("/events/delete/:id", adminController.deleteEvent);
+router.get('/passwords', adminController.passwords);
 
 module.exports = router;
