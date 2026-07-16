@@ -1,12 +1,40 @@
 <div class="ticker-section" onclick="location.assign('/rencontres')">
     <div class="section-label" style="margin-bottom:.8rem;">🔴 En ce moment</div>
     <div class="ticker-list" id="tickerList"></div>
+    <a href="/rencontres" class="ticker-cta" onclick="event.stopPropagation()">
+        Voir les rencontres →
+    </a>
 </div>
 
 <script>
 const tickerProfiles = <%- JSON.stringify(profiles) %>;
 const tickerList = document.getElementById('tickerList');
-const messages = ['recherche un plan cul dans l\'immédiat', 'est disponible ce soir', 'cherche une rencontre éphémère maintenant'];
+const messages = ['recherche un plan cul dans l\'immédiat', 
+                    'est en live maintenant',
+                    'est disponible ce soir', 
+                    'cherche une rencontre éphémère maintenant',
+                    'cherche une rencontre maintenant',
+                    'disponible pour une soirée sans prise de tête',
+                    'est connecté en ce moment',
+                    'cherche quelqu’un pour ce soir',
+                    'est prête à faire connaissance immédiatement',
+                    'recherche une aventure spontanée',
+                    'veut baiser ce soir',
+                    'est disponible actuellement',
+                    'cherche une personne près de chez elle',
+                    'est ouverte à une nouvelle rencontre',
+                    'cherche une connexion sans engagement',
+                    'est active sur la plateforme',
+                    'attend une rencontre ce soir',
+                    'cherche une expérience excitante',
+                    'est disponible pour discuter maintenant',
+                    'vient de se connecter',
+                    'recherche une rencontre discrète',
+                    'souhaite partager un moment à deux',
+                    'est à la recherche de nouvelles aventures',
+                    'cherche une complicité immédiate'
+                    ];
+
 let tickerIndex = 0;
 
 function randomTime(){

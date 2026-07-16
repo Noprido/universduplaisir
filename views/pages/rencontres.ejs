@@ -18,6 +18,10 @@
                     <span class="status-dot"></span>
                     <%= p.actif ? 'En ligne' : 'Hors ligne' %>
                 </div>
+                <div class="profile-live <%= p.actif ? 'online' : 'offline' %>">
+                    <span class="live-dot"></span>
+                    <%= p.actif ? 'En live' : 'Hors ligne' %>
+                </div>
             </div>
             <div class="profile-body">
                 <div class="profile-head">

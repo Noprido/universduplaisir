@@ -139,7 +139,7 @@ section{padding:5rem 1.5rem;}
 
 @media(max-width:496px){
   .hero-img-layer{
-    transform: translateY(-5%);
+    /* transform: translateY(-5%); */
   }
 }
 
@@ -375,12 +375,19 @@ select.form-input option{background:var(--noir2);color:var(--ivoire);}
 .profile-card:hover .profile-img{transform:scale(1.04);}
 
 .profile-status{position:absolute;bottom:.7rem;left:.7rem;display:flex;align-items:center;gap:.4rem;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;backdrop-filter:blur(8px);}
+.profile-live{position:absolute;bottom:.7rem;left:calc(.7rem + 92px);display:flex;align-items:center;gap:.4rem;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;backdrop-filter:blur(8px);}
 .profile-status.online{background:rgba(0,0,0,.6);color:#4caf50;}
 .profile-status.offline{background:rgba(0,0,0,.6);color:var(--ivoire-muted);}
+.profile-live.online{background:rgba(0,0,0,.6);color:#d71c18;}
+.profile-live.offline{background:rgba(0,0,0,.6);color:var(--ivoire-muted); display: none;}
 .status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.live-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
 .online .status-dot{background:#4caf50;box-shadow:0 0 6px #4caf50;animation:pulse-green 1.5s infinite;}
 .offline .status-dot{background:var(--ivoire-muted);}
+.online .live-dot{background:#d71c18;box-shadow:0 0 6px #d71c18;animation:pulse-red 1.5s infinite;}
+.offline .live-dot{background:var(--ivoire-muted);}
 @keyframes pulse-green{0%,100%{box-shadow:0 0 4px #4caf50;}50%{box-shadow:0 0 10px #4caf50;}}
+@keyframes pulse-red{0%,100%{box-shadow:0 0 4px #d71c18;}50%{box-shadow:0 0 10px #d71c18;}}
 
 .profile-body{padding:1.2rem;}
 .profile-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.6rem;}
@@ -401,3 +408,23 @@ select.form-input option{background:var(--noir2);color:var(--ivoire);}
 .ticker-dot{width:7px;height:7px;border-radius:50%;background:#4caf50;box-shadow:0 0 6px #4caf50;flex-shrink:0;animation:pulse-green 1.5s infinite;}
 .ticker-name{color:var(--ivoire);font-weight:500;}
 .ticker-time{margin-left:auto;font-size:.65rem;color:var(--ivoire-muted);opacity:.7;}
+
+/* ticker btn */
+
+.ticker-cta{
+    display:block;
+    width:fit-content;
+    margin:1rem auto 0;
+    padding:.65rem 1.5rem;
+    background:var(--or);
+    color:var(--noir);
+    font-size:.65rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.ticker-cta:hover{
+    background:var(--or-light);
+}
