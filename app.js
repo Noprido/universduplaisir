@@ -17,6 +17,14 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24h
 }));
 
+app.use((req, res, next) => {
+
+    res.locals.req = req;
+
+    next();
+
+});
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
